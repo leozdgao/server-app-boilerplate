@@ -1,0 +1,8 @@
+// 应该使用该文件作为这个应用的入口点，它只做两件事：
+//
+// - 调用babel的`require hook`
+// - 调用应用的主要逻辑模块
+//
+
+require('babel-register')
+require('../server')

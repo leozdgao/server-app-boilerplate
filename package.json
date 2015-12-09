@@ -1,0 +1,28 @@
+{
+  "name": "webpack-project",
+  "version": "0.1.0",
+  "description": "template for webpack based web page project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "leozdgao",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.3.15",
+    "babel-eslint": "^4.1.6",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "babel-register": "^6.3.13",
+    "css-loader": "^0.23.0",
+    "eslint": "^1.10.3",
+    "less": "^2.5.3",
+    "less-loader": "^2.2.2",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.9"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
