@@ -1,6 +1,8 @@
 # server-app-boilerplate
 
-基于server的Web app的样板项目，主要的目标是有两个：
+## 简介
+
+这个项目是基于server的Web app的样板项目，主要的目标是有两个：
 
 - 优化开发体验
 - 总结一个更科学的目录结构
@@ -11,5 +13,9 @@
 - client端可以利用到webpack的HMR
 - 使用ES2015并用babel转换，保证浏览器兼容性
 - 使用eslint统一代码风格
+
+## 使用的工具和框架
+
+
 
 Still working on it...

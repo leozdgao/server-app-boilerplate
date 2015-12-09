@@ -1,12 +1,48 @@
-// #Custom:10 This is a task
-// #Custom:0 Another
-// #TODO:0 task
-// #TODO:10 2015-02-09 This task
-// #DOING:0 x 2015-02-09 2015-02-08 This task was created on 2015-02-08 and completed on 2015-02-09
-// #doing:20 This task is due on 2015-02-09 due:2015-02-09
-// #doing:0 This task has a *madjs* tag +madjs @hhh
-// #DOING:10 This task has a *madjs* context +es6 @madjs profile:piascikj
-// #doing:10 This task has profile metadata
-module.exports = {
+/* eslint-disable */
+var path = require('path')
+var webpack = require('webpack')
+var config = require('../environment')
 
+// #TODO:0 parse entry point +webpack
+// var entry = parseEntry()
+
+module.exports = {
+  devtool: 'source-map',
+  entry: [
+    'webpack-hot-middleware/client',
+    './src/index'
+  ],
+  output: {
+    path: config.publicPath,
+    filename: 'bundle.js',
+    publicPath: '/static/'
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify('development')
+    })
+  ],
+  resolve: {
+    extensions: [ '', '.js', '.jsx' ]
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.less$/,
+        loader: 'style!css?importLoaders=2&sourceMap!autoprefixer?browsers=last 2 versions!less',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.css/,
+        loader: 'style!css?importLoaders=1&sourceMap!autoprefixer?browsers=last 2 versions',
+        exclude: /node_modules/
+      }
+    ]
+  }
 }
