@@ -10,3 +10,9 @@ app.listen(port, _ => {
 })
 
 // 这里除了让app开始监听外，如果需要数据库之类的模块，也应该在这里统一初始化
+//
+
+// 防止进程因为异常而退出
+process.on('uncaughtException', err => {
+  console.log('Caught a fatal exception: ' + err.message)
+})

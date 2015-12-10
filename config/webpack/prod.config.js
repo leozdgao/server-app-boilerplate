@@ -5,7 +5,7 @@ import AssetsPlugin from 'assets-webpack-plugin'
 import env from '../environment'
 import { parseEntry } from './helper'
 
-const config = {
+module.exports = {
   devtool: 'source-map',
   entry: parseEntry(),
   output: {
@@ -56,5 +56,3 @@ const config = {
     // 一些vendors，建议将它们额外打包
   }
 }
-
-export default config

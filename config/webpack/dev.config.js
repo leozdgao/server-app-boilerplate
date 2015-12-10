@@ -17,7 +17,7 @@ else {
   }, {})
 }
 
-const config = {
+module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: entries,
   output: {
@@ -54,5 +54,3 @@ const config = {
     ]
   }
 }
-
-export default config

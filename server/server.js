@@ -5,8 +5,9 @@ import cgiHandler from './helper/cgiHandler'
 
 const app = express()
 
-// 配置模板引擎
-//
+// #TODO:4 配置模板引擎 +server
+app.set('view engine', 'hbs')
+app.set('views', env.entriesDirectory)
 
 // 建议将静态文件发布到CDN，或通过nginx来host
 // 如果不需要node来host静态文件，直接删除这个部分
@@ -16,7 +17,7 @@ const app = express()
 // 开发模式下，添加webpack的hmr中间件
 if (!__IS_PROD__) {
   const webpack = require('webpack')
-  const config = require('../config/webpack/dev.config.js').default
+  const config = require('../config/webpack/dev.config.js')
   const compiler = webpack(config)
 
   app.use(require('webpack-dev-middleware')(compiler, {
@@ -42,7 +43,7 @@ app.use((req, res, next) => {
 
 // 处理web server运行中的异常
 app.use((err, req, res, next) => {
-  // res.status(500).render('')
+  res.status(500).json({ msg: err.message })
 })
 
 export default app
