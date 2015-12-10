@@ -14,8 +14,25 @@
 - 使用ES2015并用babel转换，保证浏览器兼容性
 - 使用eslint统一代码风格
 
-## 使用的工具和框架
+## 项目模块划分
 
+[TODO]: [使用yeoman的generator来选择需要包含的模块](#NEXT:50)
+
+- 通用cgi模块
+
+计划中的模块
+
+- 一个mock的api服务，用来给前端调试api请求
+- 日志模块
+- 缓存模块
+- oAuth模块
+
+[TODO]: [一个mock的api服务，用来给前端调试api请求](#NEXT:10)
+[TODO]: [日志模块](#NEXT:20)
+[TODO]: [缓存模块](#NEXT:30)
+[TODO]: [oAuth模块](#NEXT:40)
+
+## 使用的工具和框架
 
 
 Still working on it...

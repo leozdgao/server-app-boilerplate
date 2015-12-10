@@ -3,6 +3,7 @@
 // - 调用babel的`require hook`
 // - 调用应用的主要逻辑模块
 //
+// 一般情况下，此文件不包含任何逻辑，几乎不需要修改
 
 require('babel-register')
 require('../server')

@@ -1,25 +1,33 @@
-/* eslint-disable */
-var path = require('path')
-var webpack = require('webpack')
-var config = require('../environment')
+import { HotModuleReplacementPlugin, DefinePlugin } from 'webpack'
+import _ from 'lodash'
+import env from '../environment'
+import { parseEntry } from './helper'
 
-// #TODO:0 parse entry point +webpack
-// var entry = parseEntry()
+// #DONE:20 解析enties对象 +webpack
+const hmrClient = 'webpack-hot-middleware/client'
+const composeHmr = entry => [ hmrClient, entry ]
+let entries = parseEntry() // 返回一个字符串或者是对象
+if (_.isString(entries)) {
+  entries = composeHmr(entries)
+}
+else {
+  entries = _.reduce(entries, (acc, val, key) => {
+    acc[key] = composeHmr(val)
+    return acc
+  }, {})
+}
 
-module.exports = {
-  devtool: 'source-map',
-  entry: [
-    'webpack-hot-middleware/client',
-    './src/index'
-  ],
+const config = {
+  devtool: 'cheap-module-eval-source-map',
+  entry: entries,
   output: {
-    path: config.publicPath,
-    filename: 'bundle.js',
+    path: env.publicPath,
+    filename: '[name].js',
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
+    new HotModuleReplacementPlugin(),
+    new DefinePlugin({
       'process.env': JSON.stringify('development')
     })
   ],
@@ -46,3 +54,5 @@ module.exports = {
     ]
   }
 }
+
+export default config

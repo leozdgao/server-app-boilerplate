@@ -7,9 +7,16 @@
 //     port: process.env['SITE_PORT'] || 3000
 //   }
 
-import path from 'path'
+import fp from 'path'
 
-module.exports = {
+const node_env = process.env['NODE_ENV']
+export const __IS_PROD__ = node_env === 'production'
+// const __IS_DEV__ = !__IS_PROD__
+
+const config = {
   port: 3000,
-  publicPath: path.join(__dirname, 'dist')
+  publicPath: fp.join(__dirname, '../../dist'),
+  entriesDirectory: fp.join(__dirname, '../../server/views')
 }
+
+export default config

@@ -1,3 +1,3 @@
 require('babel-register')
 
-module.export = require('./webpack/dev.config.js')
+module.export = require('./webpack/prod.config.js')
