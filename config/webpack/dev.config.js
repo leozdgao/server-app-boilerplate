@@ -3,7 +3,7 @@ import _ from 'lodash'
 import env from '../environment'
 import { parseEntry } from './helper'
 
-// #DONE:20 解析enties对象 +webpack
+// #DONE:30 解析enties对象 +webpack
 const hmrClient = 'webpack-hot-middleware/client'
 const composeHmr = entry => [ hmrClient, entry ]
 let entries = parseEntry() // 返回一个字符串或者是对象
@@ -50,6 +50,15 @@ module.exports = {
         test: /\.css/,
         loader: 'style!css?importLoaders=1&sourceMap!autoprefixer?browsers=last 2 versions',
         exclude: /node_modules/
+      },
+      // #TODO:0 为其他类型文件添加loader，比如字体文件，或者图片等 +webpack @dev
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "url-loader?limit=10000&mimetype=application/font-woff"
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "file-loader"
       }
     ]
   }

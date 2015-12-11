@@ -34,5 +34,8 @@
 
 ## 使用的工具和框架
 
+- 使用`better-npm-run`来解决环境变量设置命令的平台兼容性
+- 使用`express@4.x`作为web server框架
+- 使用`express-handlebars`作为server端模板引擎
 
 Still working on it...

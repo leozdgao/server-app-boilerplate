@@ -1,4 +1,4 @@
-// #DONE:10 webpack生产模式配置 +webpack
+// #DONE:20 webpack生产模式配置 +webpack
 import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import AssetsPlugin from 'assets-webpack-plugin'
@@ -48,8 +48,16 @@ module.exports = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('style', 'css?importLoaders=1&sourceMap!autoprefixer?browsers=last 2 versions'),
         exclude: /node_modules/
+      },
+      // #TODO:0 为其他类型文件添加loader，比如字体文件，或者图片等 +webpack @prod
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "url-loader?limit=10000&mimetype=application/font-woff"
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "file-loader"
       }
-      // #TODO:0 为其他类型文件添加loader，比如字体文件，或者图片等
     ]
   },
   externals: {
