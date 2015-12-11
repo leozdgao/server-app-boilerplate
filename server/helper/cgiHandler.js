@@ -12,6 +12,9 @@ import fsp from 'fs-promise'
 import fp from 'path'
 import _ from 'lodash'
 import { walkSync } from 'walk'
+import chalk from 'chalk'
+
+const cgiWarning = msg => console.warn(chalk.yellow(`[CGI warning] ${msg}`))
 
 function cgiHandler (options) {
   const {
@@ -20,7 +23,7 @@ function cgiHandler (options) {
   } = options
 
   // fs模块中的exists方法目前已经是`Deprecated`状态
-  // #TODO:10 查看fs模块中exists方法的替换方式
+  // #TODO:10 查看fs模块中exists方法的替换方式 +node
   const checkExist = path => {
     // return fsp.accessSync ?
       // fsp.accessSync.bind(fsp, path, fsp.F_OK) :
@@ -50,11 +53,11 @@ function cgiHandler (options) {
                 router.use(mountP, handler)
               }
               else { // 添加一些错误提示
-                console.warn(`Find a handler of [${name}] but it is not a function, so it will not be added to cgi config.`)
+                cgiWarning(`Find a handler of [${name}] but it is not a function, so it will not be added to cgi config.`)
               }
             }
             catch (e) {
-              console.warn(`Failed to add handler for [${name}], msg: ${e.message}.`)
+              cgiWarning(`Failed to add handler for [${name}], msg: ${e.message}.`)
             }
           }
         })

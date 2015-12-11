@@ -40,12 +40,19 @@ app.use(cgiHandler({
 
 app.use((req, res, next) => {
   // 404 handler
-  res.status(404).json({ msg: 404 })
+  const err = new Error('Not found')
+  err.status = 404
+  next(err)
 })
 
 // 处理web server运行中的异常
 app.use((err, req, res, next) => {
-  res.status(500).json({ msg: err.message })
+  err.status || (err.status = 500)
+
+  res.render('error/error', {
+    layout: false,
+    err
+  })
 })
 
 export default app
