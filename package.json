@@ -43,7 +43,10 @@
     }
   },
   "author": "leozdgao",
-  "repository": "https://github.com/leozdgao/server-app-boilerplate.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leozdgao/server-app-boilerplate.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "assets-webpack-plugin": "^3.2.0",
@@ -71,6 +74,7 @@
   },
   "dependencies": {
     "chalk": "^1.1.1",
+    "child-process-promise": "^1.1.0",
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",
     "fs-promise": "^0.3.1",

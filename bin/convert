@@ -1,0 +1,50 @@
+/* eslint-disable */
+
+// 该脚本用于在clone了模板项目后，修改remote repo并删除模板项目相关的history
+// 模板项目的repo地址
+var boilerplate_repo = 'https://github.com/leozdgao/server-app-boilerplate.git'
+
+var chalk = require('chalk')
+var _ = require('lodash')
+var exec = require('child-process-promise').exec
+var pkgJson = require('../package.json')
+
+// 检查package.json中的repository配置是否已经被更改
+var newRepo = getNewRepo(pkgJson)
+if (newRepo === boilerplate_repo) {
+  console.warn(
+    chalk.yellow('Please modify the repository config to your new repo in your package.json file.')
+  )
+  process.exit(0)
+}
+
+// 项目地址已被修改
+var modifyRemote =
+  'git remote set-url origin ' + newRepo + '&&' +
+  'git checkout --orphan latest_branch' + '&&' +
+  'git add -A && git commit -m "init repo"' + '&&' +
+  'git branch -D master' + '&&' +
+  'git branch -m master'
+
+exec(modifyRemote)
+  .then(function (result) {
+    console.log(chalk.green('Commit history has been convert to a simple init commit.'))
+  })
+  .fail(function (err) {
+    console.error(chalk.red('ERROR: ' + err.message))
+  })
+
+function getNewRepo (pkg) {
+  var repoConfig = pkg.repository
+  var repoUrl
+  if (repoConfig) {
+    if (_.isString(repoConfig)) repoUrl = repoConfig
+    else {
+      if (repoConfig.type === 'git') {
+        repoUrl = repoConfig.url
+      }
+    }
+  }
+
+  return repoUrl
+}
