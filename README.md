@@ -1,5 +1,7 @@
 # server-app-boilerplate
 
+[![Build Status](https://travis-ci.org/leozdgao/server-app-boilerplate.svg?branch=master)](https://travis-ci.org/leozdgao/server-app-boilerplate)
+
 ## 简介
 
 这个项目是基于server的Web app的样板项目，希望可以做到：

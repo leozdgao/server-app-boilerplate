@@ -28,6 +28,7 @@ var modifyRemote =
 
 exec(modifyRemote)
   .then(function (result) {
+    console.log(chalk.green('Remote repo url has been changed to ' + newRepo))
     console.log(chalk.green('Commit history has been convert to a simple init commit.'))
   })
   .fail(function (err) {
