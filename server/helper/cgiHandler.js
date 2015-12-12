@@ -23,10 +23,10 @@ function cgiHandler (options) {
   } = options
 
   // fs模块中的exists方法目前已经是`Deprecated`状态
-  // #TODO:10 查看fs模块中exists方法的替换方式 +node
+  // #DONE:30 查看fs模块中exists方法的替换方式 +node
   const checkExist = path => {
     // return fsp.accessSync ?
-      // fsp.accessSync.bind(fsp, path, fsp.F_OK) :
+      // fsp.accessSync.bind(fsp, path, fsp.F_OK) : // fsp中并并没有F_OK等常量
     return fsp.existsSync.bind(fsp, path)
   }
   const checkRouterPathExist = checkExist(routerPath)

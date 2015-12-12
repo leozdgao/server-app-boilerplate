@@ -3,7 +3,7 @@ import _ from 'lodash'
 import env from '../environment'
 import { parseEntry } from './helper'
 
-// #DONE:30 解析enties对象 +webpack
+// #DONE:40 解析enties对象 +webpack
 const hmrClient = 'webpack-hot-middleware/client'
 const composeHmr = entry => [ hmrClient, entry ]
 let entries = parseEntry() // 返回一个字符串或者是对象

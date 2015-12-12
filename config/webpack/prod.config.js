@@ -49,7 +49,7 @@ module.exports = {
         loader: ExtractTextPlugin.extract('style', 'css?importLoaders=1&sourceMap!autoprefixer?browsers=last 2 versions'),
         exclude: /node_modules/
       },
-      // #TODO:0 为其他类型文件添加loader，比如字体文件，或者图片等 +webpack @prod
+      // #TODO:10 为其他类型文件添加loader，比如字体文件，或者图片等 +webpack @prod
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: "url-loader?limit=10000&mimetype=application/font-woff"
